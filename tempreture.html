@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <title>Temperature Converter</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; text-align: center; padding: 20px; }
+    header { background: #0a74da; color: #fff; padding: 20px 0; }
+    .converter { background: #fff; padding: 30px; max-width: 500px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    select, input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #0a74da; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #094a9c; }
+    footer { margin-top: 40px; color: #777; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Temperature Converter</h1>
+</header>
+
+<div class="converter">
+  <input type="number" id="tempInput" placeholder="Enter value">
+
+  <select id="tempFrom">
+    <option value="C">Celsius</option>
+    <option value="F">Fahrenheit</option>
+    <option value="K">Kelvin</option>
+  </select>
+
+  <select id="tempTo">
+    <option value="C">Celsius</option>
+    <option value="F">Fahrenheit</option>
+    <option value="K">Kelvin</option>
+  </select>
+
+  <button onclick="convertTemp()">Convert</button>
+
+  <p id="tempResult"></p>
+</div>
+
+<footer>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+function convertTemp() {
+  let value = parseFloat(document.getElementById("tempInput").value);
+  let from = document.getElementById("tempFrom").value;
+  let to = document.getElementById("tempTo").value;
+  let result = value;
+
+  if (from === to) result = value;
+  else if (from === "C" && to === "F") result = (value * 9/5) + 32;
+  else if (from === "C" && to === "K") result = value + 273.15;
+  else if (from === "F" && to === "C") result = (value - 32) * 5/9;
+  else if (from === "F" && to === "K") result = (value - 32) * 5/9 + 273.15;
+  else if (from === "K" && to === "C") result = value - 273.15;
+  else if (from === "K" && to === "F") result = (value - 273.15) * 9/5 + 32;
+
+  document.getElementById("tempResult").innerText = `Result: ${result.toFixed(2)} ${to}`;
+}
+</script>
+
+</body>
+</html>

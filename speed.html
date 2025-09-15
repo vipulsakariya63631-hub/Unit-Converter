@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <title>Speed Converter</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; text-align: center; padding: 20px; }
+    header { background: #0a74da; color: #fff; padding: 20px 0; }
+    .converter { background: #fff; padding: 30px; max-width: 500px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    select, input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #0a74da; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #094a9c; }
+    footer { margin-top: 40px; color: #777; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Speed Converter</h1>
+</header>
+
+<div class="converter">
+  <input type="number" id="speedInput" placeholder="Enter value">
+
+  <select id="speedFrom">
+    <option value="mps">Meters/Second</option>
+    <option value="kmph">Kilometers/Hour</option>
+    <option value="mph">Miles/Hour</option>
+  </select>
+
+  <select id="speedTo">
+    <option value="mps">Meters/Second</option>
+    <option value="kmph">Kilometers/Hour</option>
+    <option value="mph">Miles/Hour</option>
+  </select>
+
+  <button onclick="convertSpeed()">Convert</button>
+
+  <p id="speedResult"></p>
+</div>
+
+<footer>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+function convertSpeed() {
+  let value = parseFloat(document.getElementById("speedInput").value);
+  let from = document.getElementById("speedFrom").value;
+  let to = document.getElementById("speedTo").value;
+  let result = value;
+
+  const rates = {
+    mps: 1,
+    kmph: 0.277778,
+    mph: 0.44704
+  };
+
+  result = value * (rates[from] / rates[to]);
+  document.getElementById("speedResult").innerText = `Result: ${result.toFixed(4)} ${to}`;
+}
+</script>
+
+</body>
+</html>

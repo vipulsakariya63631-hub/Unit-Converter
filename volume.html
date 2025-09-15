@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <title>Volume Converter</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; text-align: center; padding: 20px; }
+    header { background: #0a74da; color: #fff; padding: 20px 0; }
+    .converter { background: #fff; padding: 30px; max-width: 500px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    select, input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #0a74da; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #094a9c; }
+    footer { margin-top: 40px; color: #777; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Volume Converter</h1>
+</header>
+
+<div class="converter">
+  <input type="number" id="volInput" placeholder="Enter value">
+
+  <select id="volFrom">
+    <option value="L">Liters</option>
+    <option value="mL">Milliliters</option>
+    <option value="gal">Gallons</option>
+    <option value="cup">Cups</option>
+  </select>
+
+  <select id="volTo">
+    <option value="L">Liters</option>
+    <option value="mL">Milliliters</option>
+    <option value="gal">Gallons</option>
+    <option value="cup">Cups</option>
+  </select>
+
+  <button onclick="convertVolume()">Convert</button>
+
+  <p id="volResult"></p>
+</div>
+
+<footer>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+  
+function convertVolume() {
+  let value = parseFloat(document.getElementById("volInput").value);
+  let from = document.getElementById("volFrom").value;
+  let to = document.getElementById("volTo").value;
+  let result = value;
+
+  const rates = {
+    L: 1,
+    mL: 0.001,
+    gal: 3.78541,
+    cup: 0.24
+  };
+
+  result = value * (rates[from] / rates[to]);
+  document.getElementById("volResult").innerText = `Result: ${result.toFixed(4)} ${to}`;
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <title>Area Converter</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; text-align: center; padding: 20px; }
+    header { background: #0a74da; color: #fff; padding: 20px 0; }
+    .converter { background: #fff; padding: 30px; max-width: 500px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    select, input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #0a74da; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #094a9c; }
+    footer { margin-top: 40px; color: #777; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Area Converter</h1>
+</header>
+
+<div class="converter">
+  <input type="number" id="areaInput" placeholder="Enter value">
+
+  <select id="areaFrom">
+    <option value="m2">Square Meters</option>
+    <option value="cm2">Square Centimeters</option>
+    <option value="ft2">Square Feet</option>
+    <option value="acre">Acres</option>
+  </select>
+
+  <select id="areaTo">
+    <option value="m2">Square Meters</option>
+    <option value="cm2">Square Centimeters</option>
+    <option value="ft2">Square Feet</option>
+    <option value="acre">Acres</option>
+  </select>
+
+  <button onclick="convertArea()">Convert</button>
+
+  <p id="areaResult"></p>
+</div>
+
+<footer>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+function convertArea() {
+  let value = parseFloat(document.getElementById("areaInput").value);
+  let from = document.getElementById("areaFrom").value;
+  let to = document.getElementById("areaTo").value;
+  let result = value;
+
+  const rates = {
+    m2: 1,
+    cm2: 0.0001,
+    ft2: 0.092903,
+    acre: 4046.86
+  };
+
+  result = value * (rates[from] / rates[to]);
+  document.getElementById("areaResult").innerText = `Result: ${result.toFixed(4)} ${to}`;
+}
+</script>
+
+</body>
+</html>

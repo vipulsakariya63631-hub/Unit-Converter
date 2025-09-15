@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Universal Unit Converter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background: #0a74da;
+      color: #fff;
+      padding: 20px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.12);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    footer {
+      background: #0a74da;
+      color: #fff;
+      padding: 10px 0;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Universal Unit Converter</h1>
+  <p>Convert anything — quickly and easily!</p>
+</header>
+
+<div class="container">
+  <div class="card" onclick="location.href='mass.html'"><h2>Mass Converter</h2></div>
+  <div class="card" onclick="location.href='temperature.html'"><h2>Temperature Converter</h2></div>
+  <div class="card" onclick="location.href='volume.html'"><h2>Volume Converter</h2></div>
+  <div class="card" onclick="location.href='area.html'"><h2>Area Converter</h2></div>
+  <div class="card" onclick="location.href='distance.html'"><h2>Distance Converter</h2></div>
+  <div class="card" onclick="location.href='speed.html'"><h2>Speed Converter</h2></div>
+  <div class="card" onclick="location.href='datastorage.html'"><h2>Data Storage Converter</h2></div>
+  <div class="card" onclick="location.href='time.html'"><h2>Time Converter</h2></div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

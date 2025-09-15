@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <title>Time Converter</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; text-align: center; padding: 20px; }
+    header { background: #0a74da; color: #fff; padding: 20px 0; }
+    .converter { background: #fff; padding: 30px; max-width: 500px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    select, input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #0a74da; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #094a9c; }
+    footer { margin-top: 40px; color: #777; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Time Converter</h1>
+</header>
+
+<div class="converter">
+  <input type="number" id="timeInput" placeholder="Enter value">
+
+  <select id="timeFrom">
+    <option value="sec">Seconds</option>
+    <option value="min">Minutes</option>
+    <option value="hr">Hours</option>
+    <option value="day">Days</option>
+  </select>
+
+  <select id="timeTo">
+    <option value="sec">Seconds</option>
+    <option value="min">Minutes</option>
+    <option value="hr">Hours</option>
+    <option value="day">Days</option>
+  </select>
+
+  <button onclick="convertTime()">Convert</button>
+
+  <p id="timeResult"></p>
+</div>
+
+<footer>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+function convertTime() {
+  let value = parseFloat(document.getElementById("timeInput").value);
+  let from = document.getElementById("timeFrom").value;
+  let to = document.getElementById("timeTo").value;
+  let result = value;
+
+  const rates = {
+    sec: 1,
+    min: 60,
+    hr: 3600,
+    day: 86400
+  };
+
+  result = value * (rates[from] / rates[to]);
+  document.getElementById("timeResult").innerText = `Result: ${result.toFixed(4)} ${to}`;
+}
+</script>
+
+</body>
+</html>

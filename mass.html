@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-adsense-account" content="ca-pub-7779369278623997">
+  <meta charset="UTF-8">
+  <title>Mass Converter</title>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; text-align: center; padding: 20px; }
+    header { background: #0a74da; color: #fff; padding: 20px 0; }
+    .converter { background: #fff; padding: 30px; max-width: 500px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    select, input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 6px; border: 1px solid #ccc; }
+    button { background: #0a74da; color: #fff; border: none; cursor: pointer; }
+    button:hover { background: #094a9c; }
+    footer { margin-top: 40px; color: #777; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Mass Converter</h1>
+</header>
+
+<div class="converter">
+  <input type="number" id="massInput" placeholder="Enter value">
+  
+  <select id="massFrom">
+    <option value="kg">Kilograms</option>
+    <option value="g">Grams</option>
+    <option value="lb">Pounds</option>
+    <option value="oz">Ounces</option>
+  </select>
+
+  <select id="massTo">
+    <option value="kg">Kilograms</option>
+    <option value="g">Grams</option>
+    <option value="lb">Pounds</option>
+    <option value="oz">Ounces</option>
+  </select>
+
+  <button onclick="convertMass()">Convert</button>
+
+  <p id="massResult"></p>
+</div>
+
+<footer>
+  <p><a href="index.html">Back to Home</a></p>
+</footer>
+
+<script>
+function convertMass() {
+  let value = parseFloat(document.getElementById("massInput").value);
+  let from = document.getElementById("massFrom").value;
+  let to = document.getElementById("massTo").value;
+  let result = value;
+
+  // Conversion rates to kg
+  const rates = {
+    kg: 1,
+    g: 0.001,
+    lb: 0.453592,
+    oz: 0.0283495
+  };
+
+  result = value * (rates[from] / rates[to]);
+  document.getElementById("massResult").innerText = `Result: ${result.toFixed(4)} ${to}`;
+}
+</script>
+
+</body>
+</html>
